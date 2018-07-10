@@ -1,0 +1,21 @@
+.BoxCss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  background: #e74c3c;
+  text-align: center;
+}
+
+@keyframes forward-back {
+  0% {transform: translateX(0);}
+  50% {transform: translateX(500px);}
+  100% {transform: translateX(0);}
+}
+
+.BoxCss--animated {
+  animation: forward-back 5000ms;
+}
