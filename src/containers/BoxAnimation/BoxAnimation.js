@@ -14,6 +14,8 @@ class BoxAnimation extends Component {
   }
 
   handleClickCss = (milliseconds) => {
+    if(this.state.animatedCss)
+      return;
     this.setState({animatedCss: true});
     const timer = setInterval(() => {
       this.setState((prevState) => ({
@@ -31,6 +33,8 @@ class BoxAnimation extends Component {
   }
 
   handleClickCssInJs = (milliseconds) => {
+    if(this.state.animatedCssInJs)
+      return;
     this.setState({animatedCssInJs: true});
     const timer = setInterval(() => {
       this.setState((prevState) => ({
