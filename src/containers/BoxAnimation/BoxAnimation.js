@@ -10,7 +10,11 @@ class BoxAnimation extends Component {
     timerCss: 0,
     timerCssInJs: 0,
     animationDurationCss: 5000,
-    animationDurationCssInJs: 10000,
+    animationDurationCssInJs: 5000,
+    animationDurationCssInput: '5000',
+    animationDurationCssInJsInput: '5000',
+    inputValue: '',
+    backgroundColor: '#27ae60',
   }
 
   handleClickCss = (milliseconds) => {
@@ -51,11 +55,39 @@ class BoxAnimation extends Component {
     },milliseconds);
   }
 
+  handleChange = (e) => {
+    this.setState({inputValue: e.target.value});
+  }
+
+  handleButtonClick = (e) => {
+    this.setState({backgroundColor: this.state.inputValue});
+  }
+
+  handleChangeDurationCss = (e) => {
+    this.setState({animationDurationCssInput: e.target.value});
+  }
+
+  handleClickDurationCss = () => {
+    this.setState({animationDurationCss: +this.state.animationDurationCssInput});
+  }
+
+  handleChangeDurationCssInJs = (e) => {
+    this.setState({animationDurationCssInJsInput: e.target.value});
+  }
+
+  handleClickDurationCssInJs = () => {
+    this.setState({animationDurationCssInJs: +this.state.animationDurationCssInJsInput});
+  }
+
   render() {
     return (
       <div style={{padding: '20px'}}>
         <p>{`Animated CSS: ${this.state.animatedCss}`}</p>
         <p>{`Timer CSS: ${this.state.timerCss} seconds`}</p>
+        <div style={{margin: '1rem 0'}}>
+          <input type="text" placeholder="Animation duration" value={this.state.animationDurationCssInput} onChange={this.handleChangeDurationCss}/>
+          <button type="button" onClick={this.handleClickDurationCss}>Change</button>
+        </div>
         <BoxCss
           click={this.handleClickCss}
           animated={this.state.animatedCss}
@@ -64,10 +96,20 @@ class BoxAnimation extends Component {
         </BoxCss>
         <p>{`Animated CSS in JS: ${this.state.animatedCssInJs}`}</p>
         <p>{`Timer CSS in JS: ${this.state.timerCssInJs} seconds`}</p>
+        <div style={{margin: '1rem 0'}}>
+          <input type="text" placeholder="Animation duration" value={this.state.animationDurationCssInJsInput} onChange={this.handleChangeDurationCssInJs}/>
+          <button type="button" onClick={this.handleClickDurationCssInJs}>Change</button>
+        </div>
+        <p>Change color:</p>
+        <div style={{margin: '1rem 0'}}>
+          <input type="text" placeholder="color" value={this.state.inputValue} onChange={this.handleChange}/>
+          <button type="button" onClick={this.handleButtonClick}>Change</button>
+        </div>
         <BoxCssInJs
           click={this.handleClickCssInJs}
           animated={this.state.animatedCssInJs}
           duration={this.state.animationDurationCssInJs}
+          backgroundColor={this.state.backgroundColor}
         >Css in Js
         </BoxCssInJs>
       </div>

@@ -15,7 +15,7 @@ const Box = styled.div`
   width: ${props => props.width}px;
   height: ${props => props.height}px;
   color: #ffffff;
-  background: #27ae60;
+  background: ${props => props.backgroundColor};
   text-align: center;
   animation: ${props => props.animated ? `${forwardBack} ${props.duration}ms` : 'none'};
 `;
@@ -27,6 +27,7 @@ const BoxCssInJs = (props) => (
     duration={props.duration}
     width={200}
     height={200}
+    backgroundColor={props.backgroundColor}
   >Css in Js
   </Box>
 );
@@ -34,7 +35,8 @@ const BoxCssInJs = (props) => (
 BoxCssInJs.propTypes = {
   animated: PropTypes.bool.isRequired,
   click: PropTypes.func.isRequired,
-  duration: PropTypes.number.isRequired
+  duration: PropTypes.number.isRequired,
+  backgroundColor: PropTypes.string.isRequired
 };
 
 export default BoxCssInJs;
